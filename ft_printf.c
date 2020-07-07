@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/06/29 13:18:52 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:22:25 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,41 @@
 #include "ft_printf.h"
 
 
-void		ft_formatletter(t_printf *format)
+void		ft_formatletter(t_printf *data)
 {
-	format->len_str = 0;
-	while (*format->str)
+	data->len_str = 0;
+	while (*data->str)
 	{
-		if (*format->str == '%')
+		if (*data->str == '%')
 		{
-            printf("%s\n", "ft_formatletter");
-			ft_setformat(format);
-			// ft_advance(format);
-			if (*format->str != 'd' && *format->str != 'i' &&
-				*format->str != 'c' && *format->str != 's' &&
-				*format->str != 'u' && *format->str != 'x' &&
-				*format->str != 'X' && *format->str != 'p' &&
-				*format->str != '%')
+			ft_setformat(data);
+			// ft_advance(data);
+			if(ft_isformat(data) == 1)
 				break ;
 		}
 		else
-			format->len_str += write(1, format->str, 1);
-		format->str++;
+			data->len_str += write(1, data->str, 1);
+		data->str++;
 	}
-	va_end(format->argptr);
+	va_end(data->argptr);
 }
 
-int			ft_printf(const char *s, ...)
+int			ft_printf(const char *format, ...)
 {
-	t_printf	format;
-    printf("%s\n", "ft_printf");
-	format.str = (char *)s;
-	va_start(format.argptr, s);
-	ft_formatletter(&format);
-	va_end(format.argptr);
-	return (format.len_str);
+	printf("%s", format);
+	t_printf	data;
+	data.str = (char *)format;
+	va_start(data.argptr, format);
+	ft_formatletter(&data);
+	va_end(data.argptr);
+	return (data.len_str);
 }
 
 int main(void)
 {
-    ft_printf("%0-5");
+
+	printf("\n|%d|\n",	  printf("%08d", 3));
+	printf("\n|%d|\n", ft_printf("%08d", 3));
+	// printf("%0*s", "s");
+	
 }

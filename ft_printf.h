@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:52:01 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/06/29 12:59:42 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/07 12:24:19 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ typedef struct	s_printf
 	va_list		argptr;
 } 				t_printf;
 
-void		ft_setformat(t_printf *format);
-void		ft_pick(int nb, t_printf *format);
-// void		ft_pick2(int nb, t_printf *format);
+void		ft_setformat(t_printf *data);
+void		ft_pick(int nb, t_printf *data);
+void		ft_pick2(int nb, t_printf *data);
 int	ft_isalpha(int c);
 int ft_isdigit(char c);
 int	ft_atoi(const char *str);
+int ft_isformat(t_printf *data);
 
 #endif
