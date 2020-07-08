@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/07 13:22:22 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/08 13:02:58 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		ft_pick2(int nb, t_printf *data)
 
 		if (*data->str == '*')
 		{
-			data->precision = va_arg(data->argptr, int);
+			data->precision = va_arg(data->arg, int);
 			if (data->precision == 0)
 				data->precision = -1;
 		}
@@ -48,9 +48,10 @@ void		ft_pick(int nb, t_printf *data)
 		data->tab = '-';
 	else if (*data->str == '0' && data->width == 0)
 		data->zero_space = '0';
+
 	else if (*data->str == '*')
 	{
-		nb = va_arg(data->argptr, int);
+		nb = va_arg(data->arg, int);
 		data->width = (nb < 0) ? (nb * -1) : nb;
 		if (nb < 0)
 			data->tab = '-';
@@ -60,6 +61,27 @@ void		ft_pick(int nb, t_printf *data)
 		data->width = ft_atoi(data->str);
 	ft_pick2(nb, data);
 }
+
+void		ft_formalization(int nb, t_printf *data)
+{
+	data->tab = *data->str == '-' ? '-' : ' ';
+
+	data->zero_space = *data->str == '0' && data->width == 0 ? '0': ' ';
+
+
+	nb = *data->str == '*' ? va_arg(data->arg, int): 0 ;
+
+	data->width = (*data->str == '*' && nb < 0) ? (nb * -1) : nb;
+
+	data->tab = nb < 0 ? '-' : ' ';
+	
+	//segunda arte
+	data->dot = ++*data->str == '.' ? '.': ' ';
+	data->precision = data->dot == '.' &&  *data->str == '*'
+		? (va_arg(data->arg , int) == 0? -1: 0)
+		: (ft_isdigit(*data->str) ? -1 : 0);
+}
+
 void		ft_setformat(t_printf *data)
 {
 	int nb;	
@@ -75,7 +97,9 @@ void		ft_setformat(t_printf *data)
 	while (!ft_isalpha(*data->str))
 	{
 		++data->str;
-		ft_pick(nb, data);
+		printf("*****\n");
+		// ft_pick(nb, data);
+		ft_formalization(nb, data);
 		if (*data->str == '%')
 			break ;
 	}

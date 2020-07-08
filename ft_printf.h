@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:52:01 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/07 12:24:19 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/08 09:54:55 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_printf
 	int			precision;
 	int			len_str;
 	int			aux;
-	va_list		argptr;
+	va_list		arg;
 } 				t_printf;
 
 void		ft_setformat(t_printf *data);
