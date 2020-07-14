@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:52:01 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/08 09:54:55 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/13 14:47:11 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ typedef struct	s_printf
 } 				t_printf;
 
 void		ft_setformat(t_printf *data);
-void		ft_pick(int nb, t_printf *data);
-void		ft_pick2(int nb, t_printf *data);
+void		ft_type_print(int nb, t_printf *data);
+void		ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void		ft_spacex(t_printf *format, int nb);
+size_t		ft_intlen(long nb, int div);
 int	ft_isalpha(int c);
 int ft_isdigit(char c);
 int	ft_atoi(const char *str);
