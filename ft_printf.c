@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/14 13:29:43 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/21 11:45:48 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,12 @@ void		ft_setformat(t_printf *data)
 	int nb;	
 	data->width 		= 0;
 	data->precision 	= 0;
-	//optimizar
 	data->tab 			= ' ';
 	data->zero_space 	= ' ';
 	data->dot 			= ' ';
-
-	// data->len_str		= 5;
-	//optimizar
 	while (!ft_isalpha(*data->str))
 	{
 		++data->str;
-		// ft_pick(nb, data);
 		ft_type_print(nb, data);
 		if (*data->str == '%')
 			break ;
@@ -85,20 +80,14 @@ int			ft_printf(const char *format, ...)
 	return (data.len_str);
 }
 
-int main(void)
-{
+// int main(void)
+// {
 
-	// printf("\n|%d|\n",	  printf("%08d", 3));
-	// printf("\n|%d|\n", ft_printf("%08d", 3));
-	// printf("%0*s", "s");
-
-	int num = 12; 
-	// int num2 = 12345; 
-	// printf("%d\n",num2); 
-	printf("%.0*d\n",num);
-	// printf("%0.*ds\n",num);
-	// printf("%------0--------.*ds\n",num);
-	// printf("%.090d\n",num);
-	// printf("%0.*ds\n", 8);
+// 	// ft_printf("%-05d\n",-7);
+// 	ft_printf("%-05d\n",-7);
+// 	   printf("%-05d\n",-7);
+// 	// ft_printf("%05d\n",7);
+// 	// ft_printf("%5d\n",7);
+// 	// ft_printf("%d\n",7);
 	
-}
+// }

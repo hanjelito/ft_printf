@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:52:01 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/13 14:47:11 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/15 12:08:50 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ typedef struct	s_printf
 
 void		ft_setformat(t_printf *data);
 void		ft_type_print(int nb, t_printf *data);
-void		ft_putnbr_fd(int n, int fd);
-void	ft_putchar_fd(char c, int fd);
+void		ft_putnbr_fd(long n, int fd);
+void		ft_putchar(char x, int fd);
+void		ft_putchar_fd(char c, int fd);
 void		ft_spacex(t_printf *format, int nb);
 size_t		ft_intlen(long nb, int div);
 int	ft_isalpha(int c);
