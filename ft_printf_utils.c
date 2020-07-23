@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/21 12:43:28 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:35:37 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void		ft_type_print(int nb, t_printf *data)
 		data->str++;
 		if (*data->str == '*')
 		{
-			// data->precision = va_arg(data->arg, int);
 			data->precision = va_arg(data->arg, int) == 0 ? -1 : data->precision;
 		}
 		data->precision = ft_isdigit(*data->str) ? ft_atoi(data->str) : data->precision;
@@ -132,6 +131,16 @@ void			ft_putnbr_fd(long n, int fd)
 	if (i > 9)
 		ft_putnbr_fd(i / 10, fd);
 	ft_putchar(i % 10 + 48, fd);
+}
+
+size_t	ft_strlen(const char *c)
+{
+	int count;
+
+	count = 0;
+	while (c[count])
+		count++;
+	return (count);
 }
 
 
