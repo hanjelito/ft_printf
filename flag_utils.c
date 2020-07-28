@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/23 16:38:30 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:06:10 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void		ft_while(int space, int zero, t_printf *data, int nb)
 	int flag;
 
 	if (nb < 0 && (space > data->precision && data->zero_space == '0'))
+	{
 		write(1, "-", 1);
+	}
 	else
 		flag = 0;
 	while (space > 0 && data->tab != '-')

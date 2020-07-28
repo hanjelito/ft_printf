@@ -6,41 +6,54 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/23 20:21:15 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/28 18:14:41 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-void		print_x(t_printf *data, char *str)
+void	ft_hexamayus(unsigned int number, char type)
 {
-	int space;
-	int len;
-	int len_null;
+	unsigned int	n;
 
-	str = (str == NULL) ? "(null)" : str;
-	len = ft_strlen(str);
-	if (data->precision > 0 && 	data->precision < len)
-		len -= (len - data->precision);
-	else if (data->dot == '.' && data->precision == 0 && data->width == 0)
-		len -= len;
-	else if (data->precision == 0 && data->width > 0 && data->zero_space == ' ' && data->dot == '.')
-		len -= len;
-	if (data->width > 0)
-		space = data->width - len;
-	if (data->tab == '-')
-		space += 1;
-	if (data->tab == '-' && data->zero_space == '0')
-		data->zero_space = ' ';
-	else
-		data->zero_space = data->zero_space;
-	while (space-- > 0 && data->tab != '-')
-		data->len_str += write(1, &data->zero_space, 1);
-	if (str != NULL)
+	n = number;
+	if (n > 16)
+		ft_hexamayus(n / 16, type);
+	n = n % 16;
+	n = n < 10 ? n + '0' : n + (type == 'X' ? 55 : 87);
+	ft_putchar_fd(n, 1);
+}
+
+void		ft_auxiliar(int space, int zero, t_printf *data, int nb, char type)
+{
+	int flag;
+
+	while (space > 0 && data->tab != '-')
 	{
-		data->len_str += write(1, str, (data->dot == '.' && data->precision == -1) ? 0 : len);
+		data->len_str += write(1, (data->zero_space != '0' ||
+			(data->dot == '.' && data->precision >= 0)) ? " " : "0", 1);
+		space--;
 	}
-	while (space-- > 0 && data->tab == '-')
-		data->len_str += write(1, &data->zero_space, 1);
+	while (zero-- > 0)
+		data->len_str += write(1, "0", 1);
+	(data->dot == '.' && nb == 0 && data->precision == 0)
+		? 0 : ft_hexamayus(nb, type);
+	while (space-- > 0)
+		data->len_str += write(1, " ", 1);
+	data->len_str -= (data->dot == '.' && nb == 0 &&
+		data->precision == 0) ? 1 : 0;
+}
+
+void		print_x(t_printf *data, unsigned int nb, char type)
+{
+	int len;
+	int space;
+	int	zero;
+
+	data->len_str += len = ft_intlen(nb, 16);
+	space = data->width - ((data->precision < len)
+		? len : data->precision);
+	space += (data->dot == '.' && nb == 0 && data->precision == 0) ? 1 : 0;
+	zero = data->precision - len;
+	ft_auxiliar(space, zero, data, nb, type);
 }

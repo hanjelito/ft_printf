@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/23 21:26:47 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:10:02 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		print_s(t_printf *data, char *str)
 	int space;
 	int len;
 	int len_null;
+
+	space = 0;
 
 	str = (str == NULL) ? "(null)" : str;
 	len = ft_strlen(str);

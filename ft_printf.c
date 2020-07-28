@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/23 21:34:53 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/28 18:23:12 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void ftext(t_printf *data)
 		print_di(data, va_arg(data->arg, int));
 	else if (*data->str == 's')
 		print_s(data, va_arg(data->arg, char *));
-	// else if (*data->str == 'x' || *data->str == 'X')
-	// 	print_x(data, va_arg(data->arg, unsigned int));
+	else if (*data->str == 'x' || *data->str == 'X')
+		print_x(data, va_arg(data->arg, unsigned int), *data->str);
 	else if (*data->str == 'c')
 		print_c(data, va_arg(data->arg, int));
 	// else if (*data->str == '%')
 	// 	print_porc(data);
 	// else if (is_number(*data->str) == 1 || *data->str == ' ' || *data->str == '-')
 	// 	print_ws(data);
-	// else if (*data->str == 'u')
-	// 	print_u(data);
+	else if (*data->str == 'u')
+		print_u(data, va_arg(data->arg, int));
 }
 
 void		ft_setformat(t_printf *data)
@@ -71,12 +71,15 @@ void		ft_formatletter(t_printf *data)
 
 int			ft_printf(const char *format, ...)
 {
-	t_printf	data;
-	data.str = (char *)format;
-	va_start(data.arg, format);
-	ft_formatletter(&data);
-	va_end(data.arg);
-	return (data.len_str);
+	t_printf	*data;
+	if (!(data = ft_calloc(sizeof(t_printf), 1)))
+		return (0);
+	data->str = (char *)format;
+	va_start(data->arg, format);
+	ft_formatletter(data);
+	va_end(data->arg);
+	free(data);
+	return (data->len_str);
 }
 
 // int main(void)
@@ -87,8 +90,14 @@ int			ft_printf(const char *format, ...)
 // // 	//    printf("%-05d\n",-7);
 // // 	// ft_printf("%05d\n",7);
 // // 	// ft_printf("%5d\n",7);
-// // 	// ft_printf("%d\n",7);
+// 	// printf("\n|%d|\n", ft_printf("%07d\n", -54));
+// 	// printf("\n|%d|\n" ,   printf("%07d\n", -54));
 // // 	printf("\n|%d|\n", ft_printf("%32s", NULL));
-// ft_printf("%c", "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%");
-	
+// // ft_printf("%c", "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%");
+
+// ft_printf("%x", 4294967295u);
+
+// //    printf("%d\n", 11);
+// // ft_printf("%-07s\n", "hello");
+// //    printf("%-07s\n", "hello");
 // }
