@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/29 20:13:55 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/29 20:34:28 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,3 @@ size_t	ft_strlen(const char *c)
 		count++;
 	return (count);
 }
-
-
