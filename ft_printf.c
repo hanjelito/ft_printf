@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/14 13:29:43 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/29 13:16:27 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,19 @@ void ftext(t_printf *data)
 {	
 	
 	if (*data->str == 'd' || *data->str == 'i')
-		ft_spacex(data, va_arg(data->arg, int));
-	 	//print_d(data);
-	// else if (*data->str == 's')
-	// 	print_s(data);
-	// else if (*data->str == 'x' || *data->str == 'X')
-	// 	print_x(data);
-	// else if (*data->str == 'c')
-	// 	print_c(data);
-	// else if (*data->str == '%')
-	// 	print_porc(data);
-	// else if (is_number(*data->str) == 1 || *data->str == ' ' || *data->str == '-')
-	// 	print_ws(data);
-	// else if (*data->str == 'u')
-	// 	print_u(data);
+		print_di(data, va_arg(data->arg, int));
+	else if (*data->str == 's')
+		print_s(data, va_arg(data->arg, char *));
+	else if (*data->str == 'x' || *data->str == 'X')
+		print_x(data, va_arg(data->arg, unsigned int), *data->str);
+	else if (*data->str == 'c')
+		print_c(data, va_arg(data->arg, int));
+	else if (*data->str == 'p')
+		print_p(data, va_arg(data->arg, char *));
+	else if (*data->str == 'u')
+		print_u(data, va_arg(data->arg, int));
+	else if (*data->str == '%')
+		print_ws(data, '%');
 }
 
 void		ft_setformat(t_printf *data)
@@ -38,17 +37,12 @@ void		ft_setformat(t_printf *data)
 	int nb;	
 	data->width 		= 0;
 	data->precision 	= 0;
-	//optimizar
 	data->tab 			= ' ';
 	data->zero_space 	= ' ';
 	data->dot 			= ' ';
-
-	// data->len_str		= 5;
-	//optimizar
 	while (!ft_isalpha(*data->str))
 	{
 		++data->str;
-		// ft_pick(nb, data);
 		ft_type_print(nb, data);
 		if (*data->str == '%')
 			break ;
@@ -64,7 +58,6 @@ void		ft_formatletter(t_printf *data)
 		{
 			ft_setformat(data);
 			ftext(data);
-			// ft_advance(data);
 			if(ft_isformat(data) == 1)
 				break ;
 		}
@@ -77,28 +70,37 @@ void		ft_formatletter(t_printf *data)
 
 int			ft_printf(const char *format, ...)
 {
-	t_printf	data;
-	data.str = (char *)format;
-	va_start(data.arg, format);
-	ft_formatletter(&data);
-	va_end(data.arg);
-	return (data.len_str);
+	t_printf	*data;
+	if (!(data = ft_calloc(sizeof(t_printf), 1)))
+		return (0);
+	data->str = (char *)format;
+	va_start(data->arg, format);
+	ft_formatletter(data);
+	va_end(data->arg);
+	free(data);
+	return (data->len_str);
 }
 
-int main(void)
-{
+// int main(void)
+// {
 
-	// printf("\n|%d|\n",	  printf("%08d", 3));
-	// printf("\n|%d|\n", ft_printf("%08d", 3));
-	// printf("%0*s", "s");
+// // 	// ft_printf("%-05d\n",-7);
+// // 	// ft_printf("%-05d\n",-7);
+// // 	//    printf("%-05d\n",-7);
+// // 	// ft_printf("%05d\n",7);
+// // 	// ft_printf("%5d\n",7);
+// 	// printf("\n|%d|\n", ft_printf("%07d\n", -54));
+// 	// printf("\n|%d|\n" ,   printf("%07d\n", -54));
+// // 	printf("\n|%d|\n", ft_printf("%32s", NULL));
+// // ft_printf("%c", "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%");
 
-	int num = 12; 
-	// int num2 = 12345; 
-	// printf("%d\n",num2); 
-	printf("%.0*d\n",num);
-	// printf("%0.*ds\n",num);
-	// printf("%------0--------.*ds\n",num);
-	// printf("%.090d\n",num);
-	// printf("%0.*ds\n", 8);
-	
-}
+// ft_printf("%07d\n", -54);
+// ft_printf("this %i number\n", -267);
+// ft_printf("%7i\n", -14);
+// ft_printf("%04i\n", -532);
+// ft_printf("%04i\n", -4825);
+
+// //    printf("%d\n", 11);
+// // ft_printf("%-07s\n", "hello");
+// //    printf("%-07s\n", "hello");
+// }

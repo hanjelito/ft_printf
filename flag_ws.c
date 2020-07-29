@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_di.c                                          :+:      :+:    :+:   */
+/*   flag_ws.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/29 11:19:07 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/29 10:59:42 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
-
-void		print_di(t_printf *data, int nb)
+void		print_ws(t_printf *data, int nb)
 {
-	int len;
 	int space;
-	int	zero;
-	
-	data->len_str += len = ft_intlen(nb, 10);
-	space = data->width;
-	if(data->precision < len)
-		space -= len;
-	else
-		space -= data->precision;
-	if (nb < 0 && data->precision >= len)
-		space -= 1;
-	else if(data->dot == '.' && nb == 0 && data->precision == 0)
-		space += 1;
-	if (nb < 0)
-		zero =  (data->precision - len) + 1;
-	else
-		zero = data->precision - len;
-	
-	ft_while(space, zero, data, nb);
+	int zero;
+
+	zero = (data->zero_space == '0' && data->width > 0) ?
+		data->width - 1 : 0;
+	space = (data->width > 0) ? (data->width) : 0;
+	space -= (data->width > 0 && data->tab != '-') ? 1 : 0;
+	while (zero-- > 0 && data->tab != '-')
+	{
+		data->len_str += write(1, "0", 1);
+		space = 0;
+	}
+	while (space-- > 0 && data->tab != '-')
+		data->len_str += write(1, " ", 1);
+	data->len_str += write(1, &nb, 1);
+	while (space-- > 0 && data->tab == '-')
+		data->len_str += write(1, " ", 1);
 }
