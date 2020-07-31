@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/29 20:34:28 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/31 13:16:25 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int ft_isformat(t_printf *data)
 }
 void ft_tab(int nb, t_printf *data)
 {
+		// printf("entro");
 		data->tab = '-';
 }
 void ft_width(int nb, t_printf *data)
@@ -79,7 +80,8 @@ void ft_zero_space(t_printf *data)
 }
 void		ft_type_print(int nb, t_printf *data)
 {
-	if(*data->str == '-' || nb < 0)
+	// printf("%d\nsssss", nb);
+	if(*data->str == '-')
 		ft_tab(nb, data);
 	if (*data->str == '*')
 		nb = va_arg(data->arg, int);
@@ -152,14 +154,17 @@ void	ft_putchar_fd(char c, int fd)
 
 void			ft_putnbr_fd(long n, int fd)
 {
-	int long i;
+	int long n2;
 
-	i = n;
-	if (i < 0)
-		i = i * -1;
-	if (i > 9)
-		ft_putnbr_fd(i / 10, fd);
-	ft_putchar(i % 10 + 48, fd);
+	n2 = (int long)n;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n2 *= -1;
+	}
+	if (n2 > 9)
+		ft_putnbr_fd(n2 / 10, fd);
+	ft_putchar_fd(n2 % 10 + '0', fd);
 }
 
 size_t	ft_strlen(const char *c)
