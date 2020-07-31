@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/31 18:15:13 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:41:46 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,28 +82,28 @@ int			ft_printf(const char *format, ...)
 }
 
 
-// int main(void)
-// {
+int main(void)
+{
 
-// // 	// ft_printf("%-05d\n",-7);
-// // 	// ft_printf("%-05d\n",-7);
-// // 	//    printf("%-05d\n",-7);
-// // 	// ft_printf("%05d\n",7);
-// // 	// ft_printf("%5d\n",7);
-// 	// printf("\n|%d|\n", ft_printf("%07d\n", -54));
-// 	// printf("\n|%d|\n" ,   printf("%07d\n", -54));
-// // 	printf("\n|%d|\n", ft_printf("%32s", NULL));
-// // ft_printf("%c", "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%");
+// 	// ft_printf("%-05d\n",-7);
+// 	// ft_printf("%-05d\n",-7);
+// 	//    printf("%-05d\n",-7);
+// 	// ft_printf("%05d\n",7);
+// 	// ft_printf("%5d\n",7);
+	// printf("\n|%d|\n", ft_printf("%07d\n", -54));
+	// printf("\n|%d|\n" ,   printf("%07d\n", -54));
+// 	printf("\n|%d|\n", ft_printf("%32s", NULL));
+// ft_printf("%c", "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%");
 
-// ft_printf("%07i\n", -54);
-// ft_printf("%04i\n", -532);
-// ft_printf("%04i\n", -4825);
-// ft_printf("%7i\n", -14);
-// ft_printf("%-7i\n", -14);
-// ft_printf("%10.5i\n", -216);
-// ft_printf("%.6d\n", -3);
+ft_printf("%07i\n", -54);
+ft_printf("%04i\n", -532);
+ft_printf("%04i\n", -4825);
+ft_printf("%7i\n", -14);
+ft_printf("%-7i\n", -14);
+ft_printf("%10.5i\n", -216);
+ft_printf("%.6d\n", -3);
 
-// //    printf("%d\n", 11);
-// // ft_printf("%-07s\n", "hello");
-// //    printf("%-07s\n", "hello");
-// }
+//    printf("%d\n", 11);
+// ft_printf("%-07s\n", "hello");
+//    printf("%-07s\n", "hello");
+}
