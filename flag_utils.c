@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/31 18:14:22 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:51:26 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		ft_while(int space, int zero, t_printf *data, int nb)
 		data->len_str += write(1, "0", 1);
 	(data->dot == '.' && nb == 0 && data->precision == 0)
 	
-		? 0 : ft_putnbr_fd(nb < 0  ? nb * (-1) : nb , 1);
+		? 0 : ft_putnbr_fd(nb < 0  ? nb * (1) : nb , 1);
 	while (space-- > 0)
 		data->len_str += write(1, " ", 1);
 	data->len_str -= (data->dot == '.' && nb == 0 &&
