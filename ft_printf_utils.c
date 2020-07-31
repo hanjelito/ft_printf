@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/31 13:16:25 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:03:02 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,8 @@ void ft_precision(t_printf *data)
 	data->dot = '.';
 	data->str++;
 	if (*data->str == '*')
-	{
 		data->precision = va_arg(data->arg, int) == 0 ? -1 : data->precision;
-		
-		
-	}
 	data->precision = ft_isdigit(*data->str) ? ft_atoi(data->str) : data->precision;
-	// printf("%d\n", data->precision);
 }
 void ft_zero_space(t_printf *data)
 {
@@ -80,8 +75,7 @@ void ft_zero_space(t_printf *data)
 }
 void		ft_type_print(int nb, t_printf *data)
 {
-	// printf("%d\nsssss", nb);
-	if(*data->str == '-')
+	if(*data->str == '-' )
 		ft_tab(nb, data);
 	if (*data->str == '*')
 		nb = va_arg(data->arg, int);
@@ -166,6 +160,18 @@ void			ft_putnbr_fd(long n, int fd)
 		ft_putnbr_fd(n2 / 10, fd);
 	ft_putchar_fd(n2 % 10 + '0', fd);
 }
+
+// void			ft_putnbr_fd(long n, int fd)
+// {
+// 	int long i;
+
+// 	i = n;
+// 	if (i < 0)
+// 		i = i * -1;
+// 	if (i > 9)
+// 		ft_putnbr_fd(i / 10, fd);
+// 	ft_putchar(i % 10 + 48, fd);
+// }
 
 size_t	ft_strlen(const char *c)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_di.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/31 13:29:56 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/07/31 17:44:56 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,8 @@ void		print_di(t_printf *data, int nb)
 	int space;
 	int	zero;
 
-	printf("\n%d precision\n", data->precision);
-	printf("%d width\n", data->width);
-	printf("%d len_str\n", data->len_str);
-	printf("%d len\n", (int)ft_intlen(nb, 10));
-	printf("%c zero_space\n", data->zero_space);
-	printf("%c dot\n", data->dot);
-	printf("%c tab\n", data->tab);
 
-	
-	
+		
 	data->len_str += len = ft_intlen(nb, 10);
 	space = data->width;
 	if(data->precision < len)
