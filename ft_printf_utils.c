@@ -6,13 +6,13 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 19:04:08 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/03 23:19:06 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_printf.h"
-// contador de enteros
+
 size_t		ft_intlen(long nb, int div)
 {
 	size_t count;
@@ -35,7 +35,7 @@ size_t		ft_intlen(long nb, int div)
 	}
 	return (count);
 }
-// verifica si es el formato
+
 int ft_isformat(t_printf *data)
 {
 	if (*data->str != 'd' && *data->str != 'i' &&
@@ -46,11 +46,13 @@ int ft_isformat(t_printf *data)
 		return 1;
 	return 0;
 }
+
 void ft_tab(int nb, t_printf *data)
 {
 		// printf("entro");
 		data->tab = '-';
 }
+
 void ft_width(int nb, t_printf *data)
 {
 	if (nb < 0 && *data->str == '*')
@@ -69,10 +71,12 @@ void ft_precision(t_printf *data)
 		data->precision = va_arg(data->arg, int) == 0 ? -1 : data->precision;
 	data->precision = ft_isdigit(*data->str) ? ft_atoi(data->str) : data->precision;
 }
+
 void ft_zero_space(t_printf *data)
 {
 	data->zero_space = '0';
 }
+
 void		ft_type_print(int nb, t_printf *data)
 {
 	if(*data->str == '-' )

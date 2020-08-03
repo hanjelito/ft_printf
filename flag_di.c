@@ -6,13 +6,35 @@
 /*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/01 14:51:28 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/03 23:16:57 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void		ft_press_di(int space, int zero, t_printf *data, int nb)
+{
+	int flag;
 
+	flag = -1;
+
+	if (nb < 0 && (space > data->precision && data->zero_space == '0'))
+	{
+		write(1, "-", 1);
+	}
+	else
+		flag = 0;
+	space  = ft_pre_space_zero(space, data);
+	if (nb < 0 && flag == 0){
+		ft_putchar_fd('-', 1);
+	}
+	zero =  ft_pre_zero(zero, data);
+	(data->dot == '.' && nb == 0 && data->precision == 0)
+		? 0 : ft_putnbr_fd(nb < 0  ? nb * (-1) : nb , 1);
+	ft_end_space(space, data);
+	data->len_str -= (data->dot == '.' && nb == 0 &&
+		data->precision == 0) ? 1 : 0;
+}
 
 
 void		print_di(t_printf *data, int nb)
@@ -21,8 +43,6 @@ void		print_di(t_printf *data, int nb)
 	int space;
 	int	zero;
 
-
-		
 	data->len_str += len = ft_intlen(nb, 10);
 	space = data->width;
 	if(data->precision < len)
@@ -38,5 +58,5 @@ void		print_di(t_printf *data, int nb)
 	else
 		zero = data->precision - len;
 	
-	ft_while(space, zero, data, nb);
+	ft_press_di(space, zero, data, nb);
 }

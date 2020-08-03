@@ -3,37 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   flag_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/29 10:56:10 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/03 23:17:26 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-size_t		ft_lenhex_p(unsigned long nb)
-{
-	size_t count;
-
-	count = 0;
-	if (nb == 0)
-	{
-		count++;
-		return (count);
-	}
-	if (nb < 0)
-	{
-		nb *= -1;
-		count++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 16;
-		count++;
-	}
-	return (count);
-}
 
 void	ft_hexa(size_t number)
 {
@@ -55,23 +32,16 @@ void		ft_memorypointer(char *str)
 	ft_hexa(*x);
 }
 
-void		ft_help(int space, t_printf *data, int nb, char *ch)
+void		ft_press_p(int space, t_printf *data, int nb, char *ch)
 {
-	int flag;
 
-	while (space > 0 && data->tab != '-')
-	{
-		data->len_str += write(1, (data->zero_space != '0' ||
-			(data->dot == '.' && data->precision >= 0)) ? " " : "0", 1);
-		space--;
-	}
+	space = ft_pre_space_zero(space, data);
 	write(1, "0x", 2);
 	while (data->aux-- > 0)
 		data->len_str += write(1, "0", 1);
 	(data->dot == '.' && ch == NULL && data->precision == 0)
 		? 0 : ft_memorypointer(ch);
-	while (space-- > 0)
-		data->len_str += write(1, " ", 1);
+	ft_end_space(space, data);
 	data->len_str -= (data->dot == '.' && ch == NULL &&
 		data->precision == 0) ? 1 : 0;
 }
@@ -82,12 +52,12 @@ void		print_p(t_printf *data, char *ch)
 	int				space;
 	int				len;
 
-	len = ft_lenhex_p((unsigned long)ch) + 2;
-	data->len_str += nb = ft_lenhex_p((unsigned long)ch) + 2;
+	len = ft_intlen((unsigned long)ch, 16) + 2;
+	data->len_str += nb = ft_intlen((unsigned long)ch, 16) + 2;
 	space = data->width - ((data->precision < len)
 		? len : data->precision);
 	space += (data->dot == '.' && nb == 0 && data->precision == 0) ? 1 : 0;
 	space += (ch == NULL && data->dot == '.') ? 1 : 0;
 	data->aux = data->precision - len + 2;
-	ft_help(space, data, nb, ch);
+	ft_press_p(space, data, nb, ch);
 }
