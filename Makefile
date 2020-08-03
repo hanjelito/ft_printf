@@ -19,6 +19,7 @@ ${NAME}:	${OBJS}
 all:		${NAME}
 clean:
 			${RM} ${OBJS}
+			make -sC ./libft/ clean
 fclean:		clean
 			${RM} ${NAME}
 			make -sC ./libft/ fclean
