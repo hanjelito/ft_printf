@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 13:02:00 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 12:43:22 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ftext(t_printf *data)
 	else if (*data->str == 's')
 		print_s(data, va_arg(data->arg, char *));
 	else if (*data->str == 'x' || *data->str == 'X')
-		print_x(data, va_arg(data->arg, unsigned int), *data->str);
+		print_x(data, va_arg(data->arg, unsigned int));
 	else if (*data->str == 'c')
 		print_c(data, va_arg(data->arg, int));
 	else if (*data->str == 'p')
@@ -39,6 +39,7 @@ void		ft_setformat(t_printf *data)
 	data->tab = ' ';
 	data->zero_space = ' ';
 	data->dot = ' ';
+	data->type = ' ';
 	while (!ft_isalpha(*data->str))
 	{
 		++data->str;
@@ -80,3 +81,9 @@ int			ft_printf(const char *format, ...)
 	free(data);
 	return (data->len_str);
 }
+
+// int main(void)
+// {
+//     ft_printf("%.*i\n", 6, -3);
+// 	   printf("%.*i\n", 6, -3);
+// }

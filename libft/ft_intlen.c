@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 11:26:24 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 12:04:49 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(long n, int fd)
+size_t		ft_intlen(long nb, int div)
 {
-	int long n2;
+	size_t count;
 
-	n2 = (int long)n;
-	if (n < 0)
+	count = 0;
+	if (nb == 0)
 	{
-		ft_putchar_fd('-', fd);
-		n2 *= -1;
+		count++;
+		return (count);
 	}
-	if (n2 > 9)
-		ft_putnbr_fd(n2 / 10, fd);
-	ft_putchar_fd(n2 % 10 + '0', fd);
+	if (nb < 0)
+	{
+		nb *= -1;
+		count++;
+	}
+	while (nb > 0)
+	{
+		nb = nb / div;
+		count++;
+	}
+	return (count);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 23:17:26 by juan-gon         ###   ########.fr       */
+/*   Created: 2020/08/04 10:26:17 by juan-gon          #+#    #+#             */
+/*   Updated: 2020/08/04 10:27:16 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_hexa(size_t number)
 	ft_putchar_fd(n, 1);
 }
 
-void		ft_memorypointer(char *str)
+void	ft_memorypointer(char *str)
 {
 	size_t	*x;
 
@@ -32,9 +32,8 @@ void		ft_memorypointer(char *str)
 	ft_hexa(*x);
 }
 
-void		ft_press_p(int space, t_printf *data, int nb, char *ch)
+void	ft_press_p(int space, t_printf *data, int nb, char *ch)
 {
-
 	space = ft_pre_space_zero(space, data);
 	write(1, "0x", 2);
 	while (data->aux-- > 0)
@@ -46,7 +45,7 @@ void		ft_press_p(int space, t_printf *data, int nb, char *ch)
 		data->precision == 0) ? 1 : 0;
 }
 
-void		print_p(t_printf *data, char *ch)
+void	print_p(t_printf *data, char *ch)
 {
 	unsigned long	nb;
 	int				space;

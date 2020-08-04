@@ -3,26 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   flag_u.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 23:16:46 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 10:44:05 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
-void		ft_press_u(int space, int zero, t_printf *data, unsigned int nb)
+void	ft_press_u(int space, int zero, t_printf *data, unsigned int nb)
 {
 	int flag;
 
 	flag = (nb < 0 && (space > data->precision && data->zero_space == '0'))
 		? write(1, "-", 1) : 0;
-	space  = ft_pre_space_zero(space, data);
-	zero =  ft_pre_zero(zero, data);
-	
+	space = ft_pre_space_zero(space, data);
+	zero = ft_pre_zero(zero, data);
 	(data->dot == '.' && nb == 0 && data->precision == 0)
 		? 0 : ft_putnbr_fd(nb, 1);
 	ft_end_space(space, data);
@@ -30,7 +27,7 @@ void		ft_press_u(int space, int zero, t_printf *data, unsigned int nb)
 		data->precision == 0) ? 1 : 0;
 }
 
-void		print_u(t_printf *data, unsigned int nb)
+void	print_u(t_printf *data, unsigned int nb)
 {
 	int len;
 	int space;

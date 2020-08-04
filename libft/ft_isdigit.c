@@ -6,14 +6,13 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 13:21:49 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 11:24:39 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
 }

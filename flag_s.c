@@ -3,36 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   flag_s.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/07/24 21:10:02 by juan-gon         ###   ########.fr       */
+/*   Created: 2020/08/04 10:28:31 by juan-gon          #+#    #+#             */
+/*   Updated: 2020/08/04 10:41:46 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-void		print_s(t_printf *data, char *str)
+void	print_s(t_printf *data, char *str)
 {
 	int space;
 	int len;
-	int len_null;
 
 	space = 0;
-
 	str = (str == NULL) ? "(null)" : str;
 	len = ft_strlen(str);
-	if (data->precision > 0 && 	data->precision < len)
+	if (data->precision > 0 && data->precision < len)
 		len -= (len - data->precision);
 	else if (data->dot == '.' && data->precision == 0 && data->width == 0)
 		len -= len;
-	else if (data->precision == 0 && data->width > 0 && data->zero_space == ' ' && data->dot == '.')
+	else if (data->precision == 0 && data->width > 0
+			&& data->zero_space == ' ' && data->dot == '.')
 		len -= len;
-	if (data->width > 0)
-		space = data->width - len;
-	if (data->tab == '-')
-		space += 1;
+	space = data->width > 0 ? data->width - len : space;
+	space += data->tab == '-' ? 1 : 0;
 	if (data->tab == '-' && data->zero_space == '0')
 		data->zero_space = ' ';
 	else
@@ -40,9 +36,7 @@ void		print_s(t_printf *data, char *str)
 	while (space-- > 0 && data->tab != '-')
 		data->len_str += write(1, &data->zero_space, 1);
 	if (str != NULL)
-	{
-		data->len_str += write(1, str, (data->dot == '.' && data->precision == -1) ? 0 : len);
-	}
-	while (space-- > 0 && data->tab == '-')
-		data->len_str += write(1, &data->zero_space, 1);
+		data->len_str += write(1, str, (data->dot == '.' &&
+					data->precision == -1) ? 0 : len);
+	ft_end_space(space, data);
 }

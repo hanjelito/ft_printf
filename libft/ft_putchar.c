@@ -6,14 +6,13 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 13:21:54 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 11:25:18 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void		ft_putchar(char x, int fd)
+void	ft_putchar(char x, int fd)
 {
 	write(fd, &x, 1);
 }

@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/03 19:02:53 by juan-gon         ###   ########.fr       */
+/*   Created: 2020/08/04 11:14:40 by juan-gon          #+#    #+#             */
+/*   Updated: 2020/08/04 11:22:36 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void *ft_calloc(size_t type, size_t numb)
+void	*ft_calloc(size_t type, size_t numb)
 {
-	int i;
-	void *p;
+	int		i;
+	void	*p;
 
 	i = type * numb;
 	if (!(p = malloc(i)))
