@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 19:20:11 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:27:31 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_isformat(t_printf *data)
 		return (1);
 	return (0);
 }
+
 int		ft_width1(int nb, t_printf *data)
 {
 	nb = va_arg(data->arg, int);
@@ -33,6 +34,7 @@ int		ft_width1(int nb, t_printf *data)
 		data->tab = '-';
 	return (nb);
 }
+
 void	ft_width2(int nb, t_printf *data)
 {
 	if (nb < 0 && *data->str == '*')
@@ -51,8 +53,8 @@ void	ft_precision(t_printf *data)
 	if (*data->str == '*')
 	{
 		data->precision = va_arg(data->arg, int);
-			if (data->precision == 0)
-				data->precision = -1;
+		if (data->precision == 0)
+			data->precision = -1;
 	}
 	data->precision = ft_isdigit(*data->str) ?
 		ft_atoi(data->str) : data->precision;

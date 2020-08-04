@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 14:32:54 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 12:23:25 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:28:53 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_press_di(int space, int zero, t_printf *data, int nb)
 	int nb_tmp;
 
 	flag = -1;
-	if (nb < 0 && (space > data->precision && data->zero_space == '0' ))
+	if (nb < 0 && (space > data->precision
+		&& data->zero_space == '0'))
 		write(1, "-", 1);
 	else
 		flag = 0;
