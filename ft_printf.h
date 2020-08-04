@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:52:01 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 11:05:34 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 19:20:19 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int				ft_pre_space_zero(int space, t_printf *data);
 int				ft_pre_zero(int zero, t_printf *data);
 void			ft_end_space(int space, t_printf *data);
 
-void			ft_width(int nb, t_printf *data);
+int				ft_width1(int nb, t_printf *data);
+void			ft_width2(int nb, t_printf *data);
 void			ft_precision(t_printf *data);
-void			ft_zero_space(t_printf *data);
 void			ft_type_print(int nb, t_printf *data);
 void			ft_setformat(t_printf *data);
 void			ft_while(int space, int zero, t_printf *data, int nb);

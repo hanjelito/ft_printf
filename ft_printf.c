@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-gon <juan-gon@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 12:43:22 by juan-gon         ###   ########.fr       */
+/*   Created: 2020/06/29 10:51:33 by juan-gon          #+#    #+#             */
+/*   Updated: 2020/08/04 18:28:55 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,3 @@ int			ft_printf(const char *format, ...)
 	free(data);
 	return (data->len_str);
 }
-
-// int main(void)
-// {
-//     ft_printf("%.*i\n", 6, -3);
-// 	   printf("%.*i\n", 6, -3);
-// }
