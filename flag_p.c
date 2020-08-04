@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 10:26:17 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 20:33:43 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:48:42 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_memorypointer(char *str)
 	ft_hexa(*x);
 }
 
-void	ft_press_p(int space, t_printf *data, int nb, char *ch)
+void	ft_press_p(int space, t_printf *data, char *ch)
 {
 	space = ft_pre_space_zero(space, data);
 	write(1, "0x", 2);
@@ -58,5 +58,5 @@ void	print_p(t_printf *data, char *ch)
 	space += (data->dot == '.' && nb == 0 && data->precision == 0) ? 1 : 0;
 	space += (ch == NULL && data->dot == '.') ? 1 : 0;
 	data->aux = data->precision - len + 2;
-	ft_press_p(space, data, nb, ch);
+	ft_press_p(space, data, ch);
 }

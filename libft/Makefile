@@ -6,7 +6,7 @@ NAME	= libft.a
 
 CC		= cc
 RM		= rm -f
-# CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 
 .c.o:
 		${CC} ${FLAGS} -c $< -o ${<:.c=.o}

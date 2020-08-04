@@ -6,7 +6,7 @@
 /*   By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:51:03 by juan-gon          #+#    #+#             */
-/*   Updated: 2020/08/04 20:30:42 by juan-gon         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:43:54 by juan-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		ft_setformat(t_printf *data)
 {
 	int nb;
 
+	nb = 0;
 	data->width = 0;
 	data->precision = 0;
 	data->tab = ' ';

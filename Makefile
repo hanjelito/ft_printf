@@ -5,7 +5,7 @@ OBJS	= ${SRCS:.c=.o}
 NAME	= libftprintf.a
 CC		= cc
 RM		= rm -f
-#CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
